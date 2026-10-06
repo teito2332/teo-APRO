@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apross - Tu Seguro de Salud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        apross: {
+                            light: '#48bbed',
+                            DEFAULT: '#007bb5',
+                            dark: '#005885',
+                        },
+                        whatsapp: '#25D366'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'blob': 'blob 7s infinite',
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 1, boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)' },
+                            '50%': { opacity: .9, boxShadow: '0 0 0 15px rgba(37, 211, 102, 0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Reveal animations on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 glass-panel bg-white/70 shadow-sm transition-all duration-300" id="navbar-bg"></div>
+        <div class="container mx-auto px-6 lg:px-12 relative flex items-center justify-between h-20">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-apross-light to-apross flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    A
+                </div>
+                <span class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-apross-dark to-apross text-transparent">
+                    Apross
+                </span>
+            </div>
+
+            <!-- Navegación Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                <a href="#beneficios" class="hover:text-apross transition-colors">Beneficios</a>
+                <a href="#cobertura" class="hover:text-apross transition-colors">Cobertura</a>
+                <a href="#testimonios" class="hover:text-apross transition-colors">Experiencias</a>
+            </nav>
+
+            <!-- Botón CTA Header -->
+            <div class="hidden md:block">
+                <a href="https://wa.me/5493510000000?text=Hola,%20quiero%20afiliarme%20a%20Apross." 
+                   target="_blank" rel="noopener noreferrer"
+                   class="bg-apross hover:bg-apross-dark text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:scale-105">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    Afiliate Ya
+                </a>
+            </div>
+
+            <!-- Botón Mobile -->
+            <button class="md:hidden text-2xl text-slate-700">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+            <!-- Background Decorative Blobs -->
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-50 to-white z-0"></div>
+            <div class="absolute top-20 -left-20 w-96 h-96 bg-apross-light rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute top-40 -right-20 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-20 left-1/2 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+
+            <div class="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- Hero Text -->
+                <div class="lg:w-1/2 text-center lg:text-left pt-12 lg:pt-0 reveal active">
+                    <div class="inline-block px-4 py-1.5 rounded-full glass-card text-apross font-semibold text-sm mb-6 border-apross/20">
+                        <i class="fas fa-shield-heart mr-2"></i> Salud integral para vos y tu familia
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-slate-800 leading-tight mb-6">
+                        Viví con la <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-apross to-teal-400">Tranquilidad</span> <br>
+                        que mereces.
+                    </h1>
+                    <p class="text-lg lg:text-xl text-slate-600 mb-10 max-w-2xl mx-auto lg:mx-0">
+                        La obra social líder de la provincia te brinda acceso a la red médica más amplia, telemedicina 24/7 y coberturas exclusivas. 
+                    </p>
+                    
+                    <!-- BOTÓN PRINCIPAL WHATSAPP -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/5493510000000?text=Hola,%20quiero%20afiliarme%20a%20Apross." 
+                           target="_blank" rel="noopener noreferrer"
+                           class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-whatsapp rounded-full overflow-hidden shadow-[0_0_20px_rgba(37,211,102,0.4)] animate-pulse-glow hover:scale-105 transition-transform duration-300 w-full sm:w-auto text-lg">
+                            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                            <i class="fab fa-whatsapp text-2xl mr-3"></i>
+                            ¡Afiliate a Apross Ya!
+                        </a>
+                        <p class="text-sm text-slate-500 font-medium">
+                            <i class="fas fa-bolt text-amber-400 mr-1"></i> Alta en 5 minutos
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hero Graphics (Floating Glass Cards) -->
+                <div class="lg:w-1/2 relative h-[500px] w-full hidden md:block reveal active">
+                    <!-- Main image placeholder / abstract shape -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-apross-dark via-apross to-apross-light rounded-[3rem] rotate-3 opacity-10 scale-95"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-apross-dark via-apross to-teal-400 rounded-[3rem] shadow-2xl overflow-hidden flex items-center justify-center">
+                         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Médicos sonriendo" class="w-full h-full object-cover opacity-60 mix-blend-overlay">
+                    </div>
+
+                    <!-- Floating Card 1 -->
+                    <div class="absolute top-10 -left-10 glass-card p-4 rounded-2xl flex items-center gap-4 animate-float shadow-xl">
+                        <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 text-xl">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">+10,000</h4>
+                            <p class="text-xs text-slate-500">Profesionales</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Card 2 -->
+                    <div class="absolute bottom-20 -right-8 glass-card p-4 rounded-2xl flex items-center gap-4 animate-float-delayed shadow-xl">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Red Privada</h4>
+                            <p class="text-xs text-slate-500">Cobertura total</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Card 3 (App) -->
+                    <div class="absolute -bottom-6 left-20 glass-card px-6 py-3 rounded-2xl flex items-center gap-3 animate-float shadow-xl z-20">
+                         <i class="fas fa-mobile-screen text-apross text-2xl"></i>
+                         <div>
+                            <p class="text-sm font-bold text-slate-800">App Móvil</p>
+                            <p class="text-xs text-slate-500">Credencial Digital</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios Section -->
+        <section id="beneficios" class="py-24 bg-white relative">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <h2 class="text-apross font-bold tracking-wide uppercase text-sm mb-2">Por qué elegirnos</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Todo lo que necesitas para cuidar tu salud</h3>
+                    <p class="text-slate-600 text-lg">Afiliarte a Apross te da acceso inmediato a una red de beneficios diseñada exclusivamente para tu bienestar y el de tu familia.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-8 rounded-3xl border border-slate-100 reveal group">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-apross text-2xl mb-6 group-hover:scale-110 group-hover:bg-apross group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-3">Consultas Médicas</h4>
+                        <p class="text-slate-600">Acceso a la cartilla más completa de especialistas en toda la provincia, sin largas esperas.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-8 rounded-3xl border border-slate-100 reveal group" style="transition-delay: 100ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-500 text-2xl mb-6 group-hover:scale-110 group-hover:bg-teal-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-3">Farmacias</h4>
+                        <p class="text-slate-600">Descuentos de hasta el 70% en medicamentos y planes especiales para patologías crónicas.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-8 rounded-3xl border border-slate-100 reveal group" style="transition-delay: 200ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-500 text-2xl mb-6 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-3">Telemedicina 24/7</h4>
+                        <p class="text-slate-600">Consultas virtuales inmediatas desde la comodidad de tu casa a través de nuestra App.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner CTA -->
+        <section class="py-20 relative overflow-hidden">
+            <!-- Background gradient for CTA -->
+            <div class="absolute inset-0 bg-gradient-to-r from-apross-dark to-apross z-0"></div>
+            
+            <!-- Decorative circles -->
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-white opacity-10 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-teal-400 opacity-20 rounded-full blur-2xl"></div>
+
+            <div class="container mx-auto px-6 lg:px-12 relative z-10 text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    El momento de cuidarte es <span class="text-teal-300">ahora</span>.
+                </h2>
+                <p class="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                    Unite a las miles de familias que ya confían en Apross. El trámite es 100% digital, rápido y seguro a través de WhatsApp.
+                </p>
+                
+                <a href="https://wa.me/5493510000000?text=Hola,%20quiero%20afiliarme%20a%20Apross." 
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center px-10 py-5 font-bold text-apross-dark bg-white rounded-full hover:bg-slate-50 hover:scale-105 transition-all duration-300 text-xl shadow-[0_10px_30px_rgba(255,255,255,0.3)]">
+                    <i class="fab fa-whatsapp text-whatsapp text-3xl mr-3"></i>
+                    Afiliate a Apross Ya
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-slate-800 pb-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-apross flex items-center justify-center text-white font-bold">A</div>
+                        <span class="text-xl font-bold text-white">Apross</span>
+                    </div>
+                    <p class="text-sm">Administración Provincial del Seguro de Salud.<br>Comprometidos con tu bienestar.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-apross-light transition-colors">Cartilla Médica</a></li>
+                        <li><a href="#" class="hover:text-apross-light transition-colors">Turnos</a></li>
+                        <li><a href="#" class="hover:text-apross-light transition-colors">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-phone mr-2"></i> 0800-888-2776</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Marcelo T. de Alvear 758, Córdoba</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-sm">
+                <p>&copy; 2024 Apross. Prototipo no oficial diseñado con fines demostrativos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/5493510000000?text=Hola,%20quiero%20afiliarme%20a%20Apross." 
+       target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 w-16 h-16 bg-whatsapp text-white rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:-translate-y-2 hover:shadow-[0_8px_25px_rgba(37,211,102,0.5)] transition-all duration-300 z-50 animate-pulse-glow group"
+       aria-label="Afiliarse por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <!-- Tooltip -->
+        <span class="absolute right-20 bg-white text-slate-800 text-sm font-bold px-4 py-2 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+            ¡Afiliate rápido acá!
+            <!-- Triángulo del tooltip -->
+            <span class="absolute top-1/2 -right-2 -translate-y-1/2 border-8 border-transparent border-l-white"></span>
+        </span>
+    </a>
+
+    <script>
+        // Lógica para revelar elementos al hacer scroll (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Opcional: dejar de observar una vez que ya apareció
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15, // Se activa cuando el 15% del elemento es visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+
+            // Lógica para cambiar el estilo del navbar al scrollear
+            const navbarBg = document.getElementById('navbar-bg');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbarBg.classList.add('bg-white/90', 'shadow-md');
+                    navbarBg.classList.remove('bg-white/70', 'shadow-sm');
+                } else {
+                    navbarBg.classList.add('bg-white/70', 'shadow-sm');
+                    navbarBg.classList.remove('bg-white/90', 'shadow-md');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
